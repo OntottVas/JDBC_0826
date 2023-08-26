@@ -7,7 +7,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> getUser(int id) {
-        String query = "SELECT id, name, age FROM user WHERE id = ?";
+        String query = "SELECT * FROM user WHERE id = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(query)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
@@ -21,6 +21,24 @@ public class UserDaoImpl implements UserDao {
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<User> getUser(String name) {
+        String query = "SELECT * FROM user WHERE name = ?";
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(query)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return Optional.of(extractFromResultSet(rs));
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
 
     @Override
     public Set<User> getAllUsers() {
@@ -60,6 +78,19 @@ public class UserDaoImpl implements UserDao {
                 rs.getString("password"),
                 rs.getInt("age")
         );
+    }
+
+    private static Optional<User> extractFromRS(ResultSet rs) {
+        try {
+            return Optional.of(new User(rs.getInt("id"),
+                                        rs.getString("name"),
+                                        rs.getString("password"),
+                                        rs.getInt("age")));
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
 
