@@ -13,7 +13,7 @@ public class DatabaseHandler {
 
     }
 
-    public void menu() {
+    private static void menu() {
         System.out.println("Welcome to our database for user information");
         System.out.println();
         System.out.println("1 - List all users");
@@ -28,7 +28,7 @@ public class DatabaseHandler {
         System.out.println("Please select from the menu above.");
     }
 
-    public int readIntInput() {
+    private int readIntInput() {
         int input = -1;
         try {
             input = scan.nextInt();
@@ -45,11 +45,11 @@ public class DatabaseHandler {
         return input;
     }
 
-    public String readStringInput() {
+    private String readStringInput() {
         return scan.nextLine();
     }
 
-    public void choose(int choice) {
+    private void choose(int choice) {
         UserDao user = new UserDaoImpl();
         switch (choice) {
             case 0 -> System.out.println("Guess you have all the private information you need. " +
