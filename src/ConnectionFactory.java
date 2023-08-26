@@ -17,15 +17,14 @@ public class ConnectionFactory {
     }
 
     public static void main(String[] args) throws SQLException {
-
-        try (Statement statement = getConnection().createStatement()){
-            String query = "SELECT * FROM user";
-            try (ResultSet resultSet = statement.executeQuery(query)){
-                while (resultSet.next()) {
-                    int id = resultSet.getInt(1);
-                    String name = resultSet.getString(2);
-                    String password = resultSet.getString(3);
-                    int age = resultSet.getInt(4);
+        String query = "SELECT * FROM user";
+        try (Statement st = getConnection().createStatement();
+             ResultSet rs = st.executeQuery(query)){
+                while (rs.next()) {
+                    int id = rs.getInt(1);
+                    String name = rs.getString(2);
+                    String password = rs.getString(3);
+                    int age = rs.getInt(4);
 
                     User user1 = new User(id, name, password, age);
 
@@ -36,23 +35,22 @@ public class ConnectionFactory {
 
                     System.out.println(user1);
                 }
-            }
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
 
         String preparedQuery = "SELECT name FROM user";
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(preparedQuery)) {
-            try (ResultSet resultSet = preparedStatement.executeQuery()){
-                while (resultSet.next()) {
-                    System.out.println(resultSet.getString(1));
-                }
+        try (PreparedStatement ps = getConnection().prepareStatement(preparedQuery);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
             }
+
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
