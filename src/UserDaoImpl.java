@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> getUser(String name) {
-        String query = "SELECT * FROM user WHERE name = ?";
+        String query = "SELECT * FROM user WHERE name LIKE ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(query)) {
             ps.setString(1, name);
             try (ResultSet rs = ps.executeQuery()) {

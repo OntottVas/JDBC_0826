@@ -19,17 +19,17 @@ public class ConnectionFactory {
     public static void main(String[] args) throws SQLException {
         UserDao userDao = new UserDaoImpl();
 
-        System.out.println(userDao.getUser(1));
+        //System.out.println(userDao.getUser(1));
         System.out.println(userDao.getUser("Andris"));
-        System.out.println(userDao.getAllUsers());
+        //System.out.println(userDao.getAllUsers());
 
-        System.out.println(userDao.updatePassword(1, "sharknado"));
+        //System.out.println(userDao.updatePassword(1, "sharknado"));
 
-        System.out.println(userDao.getUser(1));
+        //System.out.println(userDao.getUser(1));
 
         //System.out.println(userDao.deleteUser(4));
 
-        System.out.println(userDao.getAllUsers());
+        //System.out.println(userDao.getAllUsers());
 
 
 
