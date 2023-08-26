@@ -71,6 +71,19 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
 
+    @Override
+    public boolean deleteUser(int id) {
+        String deleteQuery = "DELETE FROM user WHERE id = ?";
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(deleteQuery)){
+            ps.setInt(1, id);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private static User extractFromResultSet(ResultSet rs) throws SQLException {
         return new User(
                 rs.getInt("id"),

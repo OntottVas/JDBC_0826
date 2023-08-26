@@ -7,5 +7,5 @@ public interface UserDao {
     Optional<User> getUser(String name);
     Set<User> getAllUsers();
     boolean updatePassword(int id, String newPassword);
-
+    boolean deleteUser(int id);
 }
