@@ -16,7 +16,7 @@ public class ConnectionFactory {
         }
     }
 
-    public static void main(String[] args) throws SQLException {
+    /*public static void main(String[] args) throws SQLException {
         UserDao userDao = new UserDaoImpl();
 
         //System.out.println(userDao.getUser(1));
@@ -34,7 +34,7 @@ public class ConnectionFactory {
 
 
 
-        /*String query = "SELECT * FROM user";
+        *//*String query = "SELECT * FROM user";
         try (Statement st = getConnection().createStatement();
              ResultSet rs = st.executeQuery(query)){
                 while (rs.next()) {
@@ -55,10 +55,10 @@ public class ConnectionFactory {
         }
         catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }*//*
 
 
-        /*String preparedQuery = "SELECT name FROM user";
+        *//*String preparedQuery = "SELECT name FROM user";
         try (PreparedStatement ps = getConnection().prepareStatement(preparedQuery);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -68,7 +68,7 @@ public class ConnectionFactory {
         }
         catch (SQLException e) {
             e.printStackTrace();
-        }*/
-    }
+        }*//*
+    }*/
 
 }
