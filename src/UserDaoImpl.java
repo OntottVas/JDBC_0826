@@ -84,6 +84,21 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
 
+    @Override
+    public boolean addNewUser(int id, String name, String password, int age) {
+        String insertQuery = "INSERT INTO user (id, name, password, age) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(insertQuery)){
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, password);
+            ps.setInt(4, age);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     private static User extractFromResultSet(ResultSet rs) throws SQLException {
         return new User(
                 rs.getInt("id"),

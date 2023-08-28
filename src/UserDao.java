@@ -8,6 +8,8 @@ public interface UserDao {
     Set<User> getAllUsers();
     boolean updatePassword(int id, String newPassword);
     boolean deleteUser(int id);
+
+    boolean addNewUser(int id, String name, String password, int age);
 }
 
 

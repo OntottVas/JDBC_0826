@@ -20,6 +20,7 @@ public class DatabaseHandler {
         System.out.println("3 - Find a user by name");
         System.out.println("4 - Update password");
         System.out.println("5 - Delete user");
+        System.out.println("6 - Add user");
         System.out.println("0 - Exit");
         System.out.println();
         System.out.println(" __|__ [This is not up to the GDPR requirements] __|__");
@@ -78,6 +79,18 @@ public class DatabaseHandler {
             case 5 -> {
                 System.out.println("Give me the ID");
                 System.out.println(user.deleteUser(readIntInput()));
+                System.out.println();
+            }
+            case 6 -> {
+                System.out.println("Give me the new ID");
+                int id = readIntInput();
+                System.out.println("Give me a name");
+                String name = readStringInput();
+                System.out.println("Give me the new password");
+                String password = readStringInput();
+                System.out.println("Give me the age");
+                int age = readIntInput();
+                System.out.println(user.addNewUser(id, name, password, age));
                 System.out.println();
             }
         }
