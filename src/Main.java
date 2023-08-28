@@ -3,5 +3,6 @@ public class Main {
 
         new DatabaseHandler().run();
 
+        //nem jut eszembe jobb
     }
 }
