@@ -12,7 +12,7 @@ public class DatabaseHandler {
         }
     }
 
-    private static void menu() {
+    private void menu() {
         System.out.println("Welcome to our database for user information");
         System.out.println();
         System.out.println("1 - List all users");

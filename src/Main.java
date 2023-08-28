@@ -5,4 +5,8 @@ public class Main {
 
         //nem jut eszembe jobb
     }
+
+    // új felhasználó felvétel
+    // életkor beállitás
+    // törlés életkor alapján
 }
