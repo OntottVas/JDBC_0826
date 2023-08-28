@@ -10,7 +10,6 @@ public class DatabaseHandler {
             choice = readIntInput();
             choose(choice);
         }
-
     }
 
     private static void menu() {
@@ -78,8 +77,7 @@ public class DatabaseHandler {
             }
             case 5 -> {
                 System.out.println("Give me the ID");
-                int id = readIntInput();
-                System.out.println(user.deleteUser(id));
+                System.out.println(user.deleteUser(readIntInput()));
                 System.out.println();
             }
         }

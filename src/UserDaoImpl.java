@@ -7,7 +7,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> getUser(int id) {
-        String query = "SELECT * FROM user WHERE id = ?";
+        String query = "SELECT * FROM user WHERE id =  ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(query)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {

@@ -9,3 +9,14 @@ public interface UserDao {
     boolean updatePassword(int id, String newPassword);
     boolean deleteUser(int id);
 }
+
+
+// Data
+// ACCESS
+// OBJECT
+
+// CRUD
+// CREATE
+// READ
+// UPDATE
+// DELETE
