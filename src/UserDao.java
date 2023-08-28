@@ -10,6 +10,9 @@ public interface UserDao {
     boolean deleteUser(int id);
 
     boolean addNewUser(int id, String name, String password, int age);
+
+    boolean deleteUserByAge (int age);
+
 }
 
 

@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class DatabaseHandler {
     private final Scanner scan = new Scanner(System.in);
     private int choice = -1;
-    public void run () {
+
+    public void run() {
         while (choice != 0) {
             menu();
             choice = readIntInput();
@@ -21,6 +22,7 @@ public class DatabaseHandler {
         System.out.println("4 - Update password");
         System.out.println("5 - Delete user");
         System.out.println("6 - Add user");
+        System.out.println("7 - Delete user by age");
         System.out.println("0 - Exit");
         System.out.println();
         System.out.println(" __|__ [This is not up to the GDPR requirements] __|__");
@@ -53,7 +55,7 @@ public class DatabaseHandler {
         UserDao user = new UserDaoImpl();
         switch (choice) {
             case 0 -> System.out.println("Guess you have all the private information you need. " +
-                                        "A dinner would have been nice...");
+                    "A dinner would have been nice...");
             case 1 -> {
                 System.out.println(user.getAllUsers());
                 System.out.println();
@@ -91,6 +93,11 @@ public class DatabaseHandler {
                 System.out.println("Give me the age");
                 int age = readIntInput();
                 System.out.println(user.addNewUser(id, name, password, age));
+                System.out.println();
+            }
+            case 7 -> {
+                System.out.println("Give me the age");
+                System.out.println(user.deleteUserByAge(readIntInput()));
                 System.out.println();
             }
         }

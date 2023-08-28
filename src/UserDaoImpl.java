@@ -120,6 +120,17 @@ public class UserDaoImpl implements UserDao {
         }
         return Optional.empty();
     }
-
+    @Override
+     public boolean deleteUserByAge(int age) {
+        String deleteQuery = "DELETE FROM user WHERE age = ?";
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(deleteQuery)){
+            ps.setInt(1, age);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 }
